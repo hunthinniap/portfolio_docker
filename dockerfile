@@ -1,21 +1,17 @@
-# Step 1: Use the official Python image from Docker Hub
-FROM python:3.9-slim
+# Use the official lightweight Python image.
+# https://hub.docker.com/_/python
+FROM python:3.12-slim
 
-# Step 2: Set the working directory inside the container
-WORKDIR /app
+# Copy local code to the container image.
+ENV APP_HOME /app
+WORKDIR $APP_HOME
+COPY . ./
 
-# Step 3: Copy the current directory contents into the container at /app
-COPY . /app
+# Install production dependencies.
+RUN pip install Flask gunicorn
 
-# Step 4: Install any Python dependencies required by the app
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Step 5: Expose the port Flask will run on (default is 5000)
-EXPOSE 8080
-
-# Step 6: Define environment variable for Flask
-ENV FLASK_APP=app.py
-ENV FLASK_ENV=production
-
-# Step 7: Command to run the Flask app
-CMD ["flask", "run", "--host=0.0.0.0"]
+# Run the web service on container startup. Here we use the gunicorn
+# webserver, with one worker process and 8 threads.
+# For environments with multiple CPU cores, increase the number of workers
+# to be equal to the cores available.
+CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 app:app
