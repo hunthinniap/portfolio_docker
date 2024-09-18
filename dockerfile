@@ -11,7 +11,7 @@ COPY . /app
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Step 5: Expose the port Flask will run on (default is 5000)
-EXPOSE 5000
+EXPOSE 8080
 
 # Step 6: Define environment variable for Flask
 ENV FLASK_APP=app.py
