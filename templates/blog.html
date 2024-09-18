@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    
+    <!-- Add any additional CSS or links here -->
+    <style>
+        .content {
+            margin: 0;
+            margin-left: 200px;
+            margin-right: 200px;
+        }
+
+        .blog-post {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .blog-post img {
+            width: 50%; /* Adjust the size of the image */
+            margin-right: 20px;
+        }
+        .blog-post-details {
+            flex: 1;
+            padding-top: 0;
+        }
+        .blog-post-title {
+            font-size: 24px; /* Adjust title size */
+            margin: 0;
+        }
+        .blog-post-date {
+            font-size: 18px; /* Adjust date size */
+            color: #666; /* Adjust date color */
+            margin: 0;
+        }
+        .blog-post-link {
+            font-size: 18px; /* Adjust link size */
+            color: blue; /* Adjust link color */
+            text-decoration: none; /* Remove underline from links */
+        }
+    </style>
+
+</head>
+<body>
+<!-- Link to return to the homepage -->
+<a href="/" class="homepage-link">Hookah's Art Space</a>
+
+<div class="bg">
+    <!-- Navigation Bar -->
+    <div class="nav">
+        <a href="/music">Music</a>
+        <a href="/photography">Photography</a>
+        <a href="/videography">Videography</a>
+        <a href="/blog">Blog/Podcast</a>
+        <a href="/about">About</a>
+    </div>
+    
+    <!-- Page specific content goes here -->
+    <div class="large-blank-space"></div>
+    <div class="content">
+        <!-- Content goes here -->
+        {% for post in specs %}
+        <div class="blog-post">
+            <a href="blog/{{ post.title }}"><img src="{{ post.img_src }}" alt="{{ post.title }}"></a>
+            <div class="blog-post-details">
+                <p class="blog-post-date">{{ post.date }}</p>
+                <h2 class="blog-post-title">{{ post.title }}</h2>
+                <a href="blog/{{ post.title }}" class="blog-post-link">Read More</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="large-blank-space"></div>
+<!-- Social Media Links Section -->
+<footer class="social-media-footer">
+    <a href="https://github.com/hunthinniap" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+    <a href="https://www.instagram.com/iap.hunthinn/" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.linkedin.com/in/yuntianye/" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
+</footer>
+
+</body>
+</html>

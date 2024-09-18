@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+        .bg {
+            background-image: url("https://hunthinniapasset.s3.us-east-2.amazonaws.com/cover_PAGE.jpg");
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .art-space-text {
+            position: absolute;
+            bottom: 30%;
+            left: 20%;
+            transform: translateX(-50%);
+            width: auto;
+            font-size: 36px;
+            color: white;
+            text-align: center;
+            margin: 0;
+        }
+
+        .scrolling-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .category-link {
+            text-decoration: none;
+            color: white; /* Set the color of the title text */
+            width: 33.333%; /* Divide the width equally for 3 items */
+            display: block;
+            position: relative;
+        }
+
+        .category {
+            background-size: cover;
+            background-position: center;
+            height: 300px; /* Adjust height as needed */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s ease; /* Smooth transition for hover effect */
+        }
+
+        .category:hover {
+            transform: scale(1.05); /* Slightly enlarge on hover */
+        }
+
+        .category-title {
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent background for the text */
+            padding: 10px;
+            border-radius: 5px;
+            position: absolute;
+            bottom: -20%; /* Position title at the bottom of the image */
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="bg">
+
+    <a href="/" class="homepage-link">Hookah's Art Space</a>
+    <div class="nav">
+        <a href="/music">Music</a>
+        <a href="/photography">Photography</a>
+        <a href="/videography">Videography</a>
+        <a href="/blog">Blog/Podcast</a>
+        <a href="/about">About</a>
+    </div>
+    <div class="art-space-text">
+        Hookah's Art Space
+    </div>
+</div>
+<div class="scrolling-section">
+    <a href="/music" class="category-link">
+        <div class="category" style="background-image: url('https://hunthinniapasset.s3.us-east-2.amazonaws.com/home_music.jpeg');">
+            <span class="category-title">Music</span>
+        </div>
+    </a>
+    <a href="/photography" class="category-link">
+        <div class="category" style="background-image: url('https://hunthinniapasset.s3.us-east-2.amazonaws.com/home_photography.jpg');">
+            <span class="category-title">Photography</span>
+        </div>
+    </a>
+    <a href="/blog" class="category-link">
+        <div class="category" style="background-image: url('https://hunthinniapasset.s3.us-east-2.amazonaws.com/home_blog.jpg');">
+            <span class="category-title">Blog & Podcast</span>
+        </div>
+    </a>
+</div>
+
+<!-- Large Blank Space Section -->
+<div class="large-blank-space"></div>
+
+<!-- Social Media Links Section -->
+<footer class="social-media-footer">
+    <a href="https://github.com/hunthinniap" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+    <a href="https://www.instagram.com/iap.hunthinn/" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.linkedin.com/in/yuntianye/" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
+</footer>
+
+
+</body>
+</html>

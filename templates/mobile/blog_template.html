@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    
+    <!-- Add any additional CSS or links here -->
+    <style>
+        .icon-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        #menu-icon {
+            font-size: 24px;
+            color: black;
+        }
+
+        .popup {
+            position: fixed;
+            top: 60px;
+            right: 10%;
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+            z-index: 1001;
+            width: 70%;  /* Adjust width as needed */
+            height: 50%;
+            text-align: center;
+            align-items: center;
+        }
+
+        .popup ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .popup ul li {
+            margin-bottom: 10px;
+        }
+
+        .popup ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 50px;
+        }
+
+        .popup ul li a:hover {
+            text-decoration: underline;
+        }
+        .content {
+            margin: 0;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+<!-- Link to return to the homepage -->
+<a href="/" class="homepage-link">Hookah's Art Space</a>
+
+<div class="bg">
+    <!-- Navigation Bar -->
+    <div class="icon-container">
+        <i class="fas fa-bars" id="menu-icon"></i>
+    </div>
+    <div class="popup" id="menu-popup">
+        <ul>
+            <li><a href="/music">Music</a></li>
+            <li><a href="/photography">Photography</a></li>
+            <li><a href="/videography">Videography</a></li>
+            <li><a href="/blog">Blog&Podcast</a></li>
+            <li><a href="/about">About</a></li>
+        </ul>
+    </div>
+    
+    
+    
+    <script>
+        document.getElementById('menu-icon').addEventListener('click', function() {
+            var popup = document.getElementById('menu-popup');
+            if (popup.style.display === 'block') {
+                popup.style.display = 'none';
+            } else {
+                popup.style.display = 'block';
+            }
+        });
+    </script>
+    
+    <!-- Page specific content goes here -->
+    <div class="content">
+        <!-- Content goes here -->
+        <div class="large-blank-space"></div>
+        <div class="Blog box"> <h1> {{ title }} <br> </h1> {{ blog.replace('\n', '<br>') | safe }}</div>
+    </div>
+</div>
+<div class="large-blank-space"></div>
+<!-- Social Media Links Section -->
+<footer class="social-media-footer">
+    <a href="https://github.com/hunthinniap" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+    <a href="https://www.instagram.com/iap.hunthinn/" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.linkedin.com/in/yuntianye/" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,108 @@
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 20px;
+}
+.nav a {
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+    border: none;
+    background: none;
+    margin-left: 10px;
+    transition: text-decoration 0.3s;
+}
+.nav a:hover {
+    text-decoration: underline;
+}
+.art-space-text {
+    position: absolute;
+    bottom: 30%;
+    left: 20%;
+    transform: translateX(-50%);
+    width: auto;
+    font-size: 36px;
+    color: white;
+    text-align: center;
+    margin: 0;
+}
+
+.scrolling-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.category-link {
+    text-decoration: none;
+    color: white; /* Set the color of the title text */
+    width: 33.333%; /* Divide the width equally for 3 items */
+    display: block;
+    position: relative;
+}
+
+.category {
+    background-size: cover;
+    background-position: center;
+    height: 300px; /* Adjust height as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.category:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+.category-title {
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background for the text */
+    padding: 10px;
+    border-radius: 5px;
+    position: absolute;
+    bottom: -20%; /* Position title at the bottom of the image */
+}
+
+.social-media-footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333; /* Choose a background color that fits your design */
+    color: white;
+}
+
+.social-link {
+    margin: 0 10px;
+    color: white; /* Set the text color for links */
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+.social-link:hover {
+    text-decoration: underline;
+}
+
+.large-blank-space {
+    height: 100px; /* Adjust the height as needed to create the desired blank space */
+}
+
+.homepage-link {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    font-size: 1.5em;
+    color: black; /* Adjust color to fit your design */
+    text-decoration: none;
+    background: transparent; /* Semi-transparent background */
+    border-radius: 0 0 5px 0; /* Rounded bottom right corner */
+    z-index: 1000; /* Ensure it's above other elements */
+}
+

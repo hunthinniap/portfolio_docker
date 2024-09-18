@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photography</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <!-- Add any additional CSS or links here -->
+    <style>
+        /* ... existing styles ... */
+
+        /* Styles for the photography collections */
+        .photo-collection-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: -10px; /* Adjust spacing between photos */
+        }
+
+        .collection-cover {
+            position: relative;
+            width: calc(33.333% - 40px); /* For 3 items per row: 100% divided by 3 minus the total margin */
+            margin: 10px; /* Space between cover photos */
+            height: 0; /* Set height to 0 and use padding-top to maintain aspect ratio */
+            padding-top: 56.25%; /* 9:16 aspect ratio (100 / 16 * 9) */
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+            cursor: pointer; /* Indicates the item is clickable */
+        }
+
+
+        .collection-cover::before {
+            content: attr(data-title); /* Use the data-title attribute for the content */
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 100%;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em; /* Adjust title size */
+            transition: top 0.3s ease;
+            pointer-events: none; /* Prevent mouse events on the pseudo-element */
+        }
+
+        .collection-cover:hover::before {
+            top: 0;
+        }
+
+        .photo-collection-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between; /* This will provide space between the items */
+            padding: 20px; /* Space around the entire gallery */
+        }
+
+        .collection-cover {
+            position: relative;
+            width: calc(33.333% - 40px); /* Adjust for 3 items per row, accounting for padding and gap */
+            margin: 10px; /* Space between cover photos */
+            height: 0; /* Set height to 0 and use padding-top to maintain aspect ratio */
+            padding-top: 56.25%; /* 9:16 aspect ratio (100 / 16 * 9) */
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+            cursor: pointer; /* Indicates the item is clickable */
+        }
+
+        .intro-text {
+            padding: 20px;
+            background-color: transparent; /* Light grey background, adjust the color as needed */
+            text-align: center; /* Center the text inside the block */
+            width: 25%; /* Set the width to 1/4 of the parent element */
+            margin: auto; /* Center the block horizontally */
+        }
+        /* ... additional styles ... */
+        
+    </style>
+</head>
+<body>
+<a href="/" class="homepage-link">Hookah's Art Space</a>
+
+<div class="bg">
+    <!-- Navigation Bar -->
+    <div class="nav">
+        <a href="/music">Music</a>
+        <a href="/photography">Photography</a>
+        <a href="/videography">Videography</a>
+        <a href="/blog">Blog/Podcast</a>
+        <a href="/about">About</a>
+    </div>
+    
+    <!-- Page specific content goes here -->
+    <div class="content">
+        <div class="intro-text">
+            <h1>When the click sounds, the serendipitous moment becomes imperishable in the non-stopping time.</h1>
+            <p></p>
+        </div>
+        <div class="photo-collection-gallery">
+            {% for collection in collections %}
+                <a href="{{ collection.link }}" class="collection-cover" style="background-image: url('{{ collection.cover_url }}');" data-title="{{ collection.title }}">
+                    <!-- Hover effect is handled by CSS -->
+                </a>
+            {% endfor %}
+        </div>
+        
+    </div>
+</div>
+
+<div class="large-blank-space"></div>
+<!-- Social Media Links Section -->
+
+<footer class="social-media-footer">
+    <a href="https://github.com/hunthinniap" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+    <a href="https://www.instagram.com/iap.hunthinn/" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.linkedin.com/in/yuntianye/" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
+</footer>
+
+</body>
+</html>
