@@ -1,19 +1,34 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-app
+  name: helloworld-gke
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
-      app: my-app
+      app: hello
   template:
     metadata:
       labels:
-        app: my-app
+        app: hello
     spec:
       containers:
-      - name: my-app
-        image: gcr.io/website-435911/my-app:v1
+      - name: hello-app
+        # Replace $LOCATION with your Artifact Registry location (e.g., us-west1).
+        # Replace $GCLOUD_PROJECT with your project ID.
+        image: us-central1-docker.pkg.dev/website-435911/hello-repo/helloworld-gke:latest
+        # This app listens on port 8080 for web traffic by default.
         ports:
-        - containerPort: 80
+        - containerPort: 8080
+        env:
+          - name: PORT
+            value: "8080"
+        resources:
+          requests:
+            memory: "1Gi"
+            cpu: "500m"
+            ephemeral-storage: "1Gi"
+          limits:
+            memory: "1Gi"
+            cpu: "500m"
+            ephemeral-storage: "1Gi"
